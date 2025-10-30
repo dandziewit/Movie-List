@@ -1,0 +1,76 @@
+#!/usr/bin/env python3
+def show_menu():
+	print("The Movie List program\n")
+	print("COMMAND MENU")
+	print("list - List all movies")
+	print("add  - Add a movie")
+	print("del  - Delete a movie")
+	print("exit - Exit program\n")
+
+
+def list_movies(movies):
+	if not movies:
+		print("No movies in the list.")
+	else:
+		for i, m in enumerate(movies, start=1):
+			print(f"{i}. {m}")
+
+
+def prepopulate_movies():
+	"""Return the initial list of movies for the program."""
+	return [
+		"Hunger Games",
+		"Divergent",
+		"Maze Runner",
+	]
+
+
+def add_movie(movies):
+	name = input("Name: ").strip()
+	if name:
+		movies.append(name)
+		print(f"{name} was added.")
+	else:
+		print("No name entered. Movie not added.")
+
+
+def delete_movie(movies):
+	num = input("Number: ").strip()
+	try:
+		idx = int(num) - 1
+	except ValueError:
+		print("Invalid movie number.")
+		return
+
+	if 0 <= idx < len(movies):
+		removed = movies.pop(idx)
+		print(f"{removed} was deleted.")
+	else:
+		print("Invalid movie number.")
+
+
+def main():
+	# Prepopulate list using dedicated function (assignment requirement)
+	movies = prepopulate_movies()
+
+	show_menu()
+
+	while True:
+		cmd = input("Command: ").strip().lower()
+		if cmd == "list":
+			list_movies(movies)
+		elif cmd == "add":
+			add_movie(movies)
+		elif cmd == "del":
+			delete_movie(movies)
+		elif cmd == "exit":
+			print("Bye!")
+			break
+		else:
+			print("Not a valid command. Please try again.")
+
+
+if __name__ == "__main__":
+	main()
+	input("Press any key to continue . . .")
+
