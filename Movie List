@@ -1,9 +1,3 @@
-#!/usr/bin/env python3
-# Movie List program - simple student submission
-# Author: Damiel Dziewit
-# Date: 2025-10-30
-# Purpose: Menu-driven program to list, add, and delete movie titles.
-
 
 def show_menu():
 	"""Display the program heading and menu choices."""
